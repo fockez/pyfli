@@ -1919,7 +1919,7 @@ def controlShutter(dev, shutter=None, control=None):
             command |= fli.FLI_SHUTTER_EXTERNAL_TRIGGER_HIGH
             control.remove('triggerHigh')
         if 'external' in control:
-            command |= fli.FLI_SHUTTER_EXTERNAL_EXPOSURE
+            command |= fli.FLI_SHUTTER_EXTERNAL_EXPOSURE_CONTROL
             control.remove('external')
         if command == 0:
             msg = "Invalid control arguments %s" % control
