@@ -86,3 +86,4 @@ Thumbs.db
 ###################################
 modules.order
 Module.symvers
+pyfli/pyfli.c
