@@ -9,6 +9,7 @@ import platform
 from distutils.core import setup
 from distutils.extension import Extension
 from distutils.command.build_ext import build_ext
+from Cython.Build import cythonize
 
 system = platform.system()
 
@@ -52,7 +53,7 @@ osxsrc = [
     ]
 
 modpth = "pyfli"
-modsrc = [os.path.join(modpth, "pyfli.c")]
+modsrc = [os.path.join(modpth, "pyfli.pyx")]
 if system == "Linux":
     src = modsrc + comsrc + unxsrc + linsrc
     inc = [np.get_include(), modpth, flicom, fliunx, flilin]
@@ -98,7 +99,7 @@ setup(
     keywords = ["FLI", "fli"],
     description = "Python wrapper for Finger Lakes Instrumention SDK",
     package_data = package_data,
-    ext_modules = ext_modules,
+    ext_modules = cythonize(ext_modules),
     requires = ['numpy (>=1.5)'],
     cmdclass = {'build_ext': build_ext},
     classifiers = [
