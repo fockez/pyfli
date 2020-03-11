@@ -794,7 +794,7 @@ def getLibVersion():
     cdef char buf[256]
 
     chkerr(fli.FLIGetLibVersion(buf, 256))
-    return str(buf)
+    return str(buf, encoding='utf-8')
 
 
 def setDebugLevel(logfile, verbosity):
